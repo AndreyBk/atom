@@ -15,9 +15,9 @@ public class Util {
      * @return the largest of values.
      */
     public static int max(int[] values) {
-        int maximum=values[0];
-        for (int _i:values) {
-            if (maximum<_i) maximum=_i;
+        int maximum = values[0];
+        for (int _i : values) {
+            if (maximum < _i) maximum = _i;
         }
         return maximum;
 //        throw new UnsupportedOperationException();
@@ -30,9 +30,9 @@ public class Util {
      * @return the sum of all values.
      */
     public static long sum(int[] values) {
-        long sum=0;
-        for (int _s:values) {
-            sum=sum+_s;
+        long sum = 0;
+        for (int _s : values) {
+            sum = sum + _s;
         }
         return sum;
 //        throw new UnsupportedOperationException();
