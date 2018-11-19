@@ -20,7 +20,7 @@ public class Util {
             if (maximum < i) maximum = i;
         }
         return maximum;
-//        throw new UnsupportedOperationException();
+        //        throw new UnsupportedOperationException();
     }
 
     /**
@@ -35,7 +35,7 @@ public class Util {
             sum = sum + s;
         }
         return sum;
-//        throw new UnsupportedOperationException();
+        //        throw new UnsupportedOperationException();
     }
 
 
