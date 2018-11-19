@@ -8,16 +8,19 @@ import static junit.framework.Assert.assertEquals;
 public class UtilTest {
     @Test
     public void max0() throws Exception {
-        assertEquals(42, Util.max(new int[]{42}));
+        assertEquals(42, Util.max(new int[] {42}));
     }
+
     @Test
     public void max1() throws Exception {
-        assertEquals(3, Util.max(new int[]{1, 2, 3}));
+        assertEquals(3, Util.max(new int[] {1, 2, 3}));
     }
+
     @Test
     public void max2() throws Exception {
-        assertEquals(2, Util.max(new int[]{2, 2, 0}));
+        assertEquals(2, Util.max(new int[] {2, 2, 0}));
     }
+
     @Test
     public void max3() throws Exception {
         int[] values = {3262, 3989, 4825, 3751, 147, 2376, 2866, 1192, 2259, 905, 4810, 2481, 4243,
@@ -36,6 +39,7 @@ public class UtilTest {
             997, 3760, 3312, 4577, 988, 3325, 472, 367, 4108};
         assertEquals(4913, Util.max(values));
     }
+
     @Test
     public void sum0() throws Exception {
         assertEquals(42L, Util.sum(new int[] {42}));
