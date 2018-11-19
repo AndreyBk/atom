@@ -16,8 +16,8 @@ public class Util {
      */
     public static int max(int[] values) {
         int maximum = values[0];
-        for (int _i : values) {
-            if (maximum < _i) maximum = _i;
+        for (int i : values) {
+            if (maximum < i) maximum = i;
         }
         return maximum;
 //        throw new UnsupportedOperationException();
@@ -31,8 +31,8 @@ public class Util {
      */
     public static long sum(int[] values) {
         long sum = 0;
-        for (int _s : values) {
-            sum = sum + _s;
+        for (int s : values) {
+            sum = sum + s;
         }
         return sum;
 //        throw new UnsupportedOperationException();
