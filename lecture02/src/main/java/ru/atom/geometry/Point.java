@@ -4,7 +4,8 @@ package ru.atom.geometry;
  * Template class for
  */
 public class Point implements Collider/* super class and interfaces here if necessary */ {
-    int x=0, y=0;
+    int x = 0;
+    int y = 0;
     // fields
     // and methods
 
@@ -31,12 +32,8 @@ public class Point implements Collider/* super class and interfaces here if nece
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        if(o instanceof Point) return (this.x==((Point) o).getX() & this.y==((Point) o).getY());
+        if (o instanceof Point) return (this.x == ((Point) o).getX() & this.y == ((Point) o).getY());
 
-        // cast from Object to Point
-//        Point point = (Point) o;
-
-        // your code here
         throw new UnsupportedOperationException();
     }
 
@@ -45,17 +42,13 @@ public class Point implements Collider/* super class and interfaces here if nece
         if (this == other) return true;
         if (other == null) return false;
 
-        if(other instanceof Point) return (this.x==((Point) other).getX() & this.y==((Point) other).getY());
-        if(other instanceof Geometry) {
-            return (this.x >= ((Geometry) other).getX1() & this.x <= ((Geometry) other).getX2()) &
-                    (this.y >= ((Geometry) other).getY1() & this.y <= ((Geometry) other).getY2());
+        if (other instanceof Point) return (this.x == ((Point) other).getX() & this.y == ((Point) other).getY());
+        if (other instanceof Geometry) {
+            return (this.x >= ((Geometry) other).getX1()
+                & this.x <= ((Geometry) other).getX2())
+                & (this.y >= ((Geometry) other).getY1()
+                & this.y <= ((Geometry) other).getY2());
         }
         return false;
-
-        // cast from Object to Point
-//        Point point = (Point) o;
-
-        // your code here
-//        throw new UnsupportedOperationException();
     }
 }
