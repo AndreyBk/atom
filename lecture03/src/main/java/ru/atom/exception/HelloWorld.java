@@ -21,7 +21,7 @@ public class HelloWorld {
     public static void main(String[] args) throws IOException {
         dictioner = new ArrayList();
         URL f = HelloWorld.class.getClassLoader().getResource(filename);
-        log.info("File: "+ String.valueOf(f));
+        log.info("File: " + String.valueOf(f));
         File file = null;
 
         try {
@@ -45,57 +45,71 @@ public class HelloWorld {
         }
         String mot;
 
-        while ((mot=bufferedReader.readLine())!=null){
+        while ((mot = bufferedReader.readLine()) != null) {
             dictioner.add(mot);
-            log.info(" "+mot);
+            //log.info(" " + mot);
         }
+
+        //Игра началась
+        try {
+            new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println("Игра началась");
+
+
+
 //выбрать случайное слово
-        String xWord="abcde";
-        xWord=xWord.toLowerCase();
-        int len=xWord.length();
 
-        String inputWord="";
-        if(inputWord.length()==0) log.info("Ничего не введено");
+        String xWord = "abcde";
+        xWord = xWord.toLowerCase();
+        int len = xWord.length();
+//проверки на валидность с приведением к единому виду
+        String inputWord = "Bwbbb";
+        if (inputWord.length() == 0) log.info("Ничего не введено");
 
-        if (inputWord.length()!=xWord.length()) log.info("длина введенного слова не равна длине. повторите ввод. букв: "+ xWord.length());
+        if (inputWord.length() != xWord.length())
+            log.info("длина введенного слова не равна длине. повторите ввод. букв: " + xWord.length());
+        inputWord = inputWord.toLowerCase();
 
-        inputWord=inputWord.toLowerCase();
-        int bulls=0, cows=0;
-        char chX, chInputWord;
-        ArrayList singleChar;//
-        char[] ssss= inputWord.toCharArray();
-
-
-
-
-
-
-        for (int b=0; b<inputWord.length(); b++){
-            chX=xWord.charAt(b);
-            for (int c=0; c<inputWord.length(); c++){
-                chInputWord=inputWord.charAt(c);
-                if (chX==chInputWord & b==c) bulls++;
-
-            }
-
-
+        //singleChar список с набором символов введенного слова без повтора
+        ArrayList <Character> singleChar = new ArrayList();//
+        singleChar.add(inputWord.charAt(0));
+        for (int i = 1; i < inputWord.length(); i++) {
+            if (!verifiDouble(inputWord.charAt(i), singleChar)) singleChar.add(inputWord.charAt(i));
         }
 
+        //*******************************************
+        //логика
+        int bulls = 0, cows = 0;
+        for (int b = 0; b < inputWord.length(); b++) {
 
-
-
-
-
-
-
-
-
-
-
-
-
+            if (inputWord.charAt(b)==xWord.charAt(b)) {
+                bulls++;
+                continue;
+            }
+            for(char ch:singleChar){
+                if (ch==xWord.charAt(b) & !(inputWord.charAt(b)==xWord.charAt(b))) cows++;
+            }
+        }
+        log.info("bulls: " + bulls+ " cows: "+ cows);
     }
 
+
+
+
+
+    //***********************************************
+    //методы
+    //***********************************************
+    //если в коллекции есть символ, возвращается true
+    private static boolean verifiDouble(char c, ArrayList<Character> singleChar){
+        for (char ch:singleChar) {
+            if (ch==c)return true;
+        }
+        return false;
+    }
 
 
 
